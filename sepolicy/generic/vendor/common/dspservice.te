@@ -5,3 +5,6 @@ add_hwservice(vendor_hal_dspmanager_server, vendor_hal_dspmanager_hwservice)
 build_test_only(`
   neverallow { domain -vendor_hal_dspmanager_client -vendor_hal_dspmanager_server } vendor_hal_dspmanager_hwservice:hwservice_manager find;
 ')
+
+# Isolated compute processes reach the DSP through the AIDL service only.
+typeattribute vendor_hal_dspmanager_aidlservice isolated_compute_allowed_service;
